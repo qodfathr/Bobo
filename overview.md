@@ -165,7 +165,7 @@ this is addressed by indexing all of these `token` forms of the `word`:
 * Resumes: 1
 * Résumés: 1
 
-Note that a search for `RESUME` (all upper case) will not match anythjing in the index
+Note that a search for `RESUME` (all upper case) will not match anything in the index
 (the reasoning for this will be explained later). Moreover, the tokens are generally
 created by taking the word and _simplifying_ it, but not going in the other
 direction. For example:
@@ -174,4 +174,15 @@ direction. For example:
 
 would only result in a single form of `resume` in the index.
 
-Again, the reasoning for this will be covered in depth later.  
+Again, the reasoning for this will be covered in depth later.
+
+### Index storage
+
+The ESS index is physically stored as two primary data structures. The first is a B-Tree
+containing all of the tokens. B-Trees are nice because they are balanced and they
+can be tuned for reading and writing to physical storage by varying the degree of
+branching.
+
+The B-Tree, in turn, points to a list of positions for each `token`. The positional
+list is highly optimized with a number of artifacts to help optimize query
+operations. More on these optimizations later.  
