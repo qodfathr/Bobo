@@ -96,7 +96,82 @@ The actual index looks similar to this:
 Moreover, we can think of the `nodes` as also being mapped into the index, relative to the starting and ennding
 positions of the nodes:
 
-* _NODESTART: 1, 10
-* _NODEEND: 9, 15
+* `_NODESTART`: 1, 10
+* `_NODEEND`: 9, 15
 
+Note that some words are seemingly in the index more than once -- for example, `the` and `The` both
+appear seperately, although they only differ by case. Also, `quick` and `quickly` both appear,
+although they are variations of the same word.
 
+The reason for this is because an ESS index is not actually comprised of words but rather
+it is comprised of `tokens`. And a `token` is any string (even with spaces), and 
+every character must exactly match for two tokens to be the same. So `The` and `the`
+are two distinctly different tokens.
+
+The ESS search engine matches `tokens`. Therefore, a search for `The` is not the same
+as a search for `the` or a search for `THE`. How this is handled in a sane manner for
+the user will be described later.
+
+The special `tokens` `_NODESTART` and `_NODEEND` are just two examples of special `tokens`
+which ESS places into the index.
+
+So imagine both `Fox` and `fox` were in the index. The normal expectation of a user is that
+a search for `fox` would match against both instances. ESS has various ways of
+handling this situation, but an important mechanism is the way `words` are
+converted into `tokens`. Typically, when a `word` is added to the index, all of the
+various `token` forms of the `word` are added to the index. But what's special
+about this is that these `tokens` are added at the _exact same position_.
+
+If you think of the index as just an array of individual words, you'll have a slightly
+incorrect mental model. The reason why this is wrong is because an inverted
+word index is a mapping of words to positions; it's not a positional array of words.
+
+The following is a perfectly legal index:
+
+* a: 1
+* index: 1 
+* is: 1
+* legal: 1
+* This: 1
+
+Note that every single token has exactly one instance, and each one of those instances
+is at position 1.
+
+That's an extremely example. But now consider indexing the following node:
+
+`node`: Résumés can be a useful personal marketing tool
+
+Obviously, the index would contain the following `token`:
+
+* Résumés: 1
+
+However, it would be common for an end-user to search for `résumés` (lower-case), `resumes`
+(no diacritical marks) or even resume (lower-case, non-diacrtic singular form). In ESS
+this is addressed by indexing all of these `token` forms of the `word`:
+
+* a: 4
+* be: 3
+* can: 2
+* marketing: 7
+* personal: 6
+* resume: 1
+* résumé: 1
+* resumes: 1
+* résumés: 1
+* tool: 8
+* useful: 5
+* Resume: 1
+* Résumé: 1
+* Resumes: 1
+* Résumés: 1
+
+Note that a search for `RESUME` (all upper case) will not match anythjing in the index
+(the reasoning for this will be explained later). Moreover, the tokens are generally
+created by taking the word and _simplifying_ it, but not going in the other
+direction. For example:
+
+`node`: She waited for the show to resume
+
+would only result in a single form of `resume` in the index.
+
+Again, the reasoning for this will be covered in depth later.  
