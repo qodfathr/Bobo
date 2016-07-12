@@ -67,7 +67,7 @@ The crawler which is indexing the data has the responsibility for deciding what 
 ESS then goes a level deeper -- instead of creating a index of words mapped to `nodes`, it actually maps
 the words to `positions`. A `position` is a monotonically increasing count of the number of words seen. For example,
 imagine a file system crawler has found two text files, and maps text files to `nodes`. Further, magine these
-are the two text files, with there contents:
+are the two text files, with these contents:
 
 * A.TXT: The quick brown fox jumps over the lazy dog.
 * B.TXT: A brown dog quickly becomes lazy.
@@ -105,7 +105,7 @@ although they are variations of the same word.
 
 The reason for this is because an ESS index is not actually comprised of words but rather
 it is comprised of `tokens`. And a `token` is any string (even with spaces), and 
-every character must exactly match for two tokens to be the same. So `The` and `the`
+every character in two tokens must exactly match for two tokens to be the same. So `The` and `the`
 are two distinctly different tokens.
 
 The ESS search engine matches `tokens`. Therefore, a search for `The` is not the same
@@ -118,11 +118,11 @@ which ESS places into the index.
 So imagine both `Fox` and `fox` were in the index. The normal expectation of a user is that
 a search for `fox` would match against both instances. ESS has various ways of
 handling this situation, but an important mechanism is the way `words` are
-converted into `tokens`. Typically, when a `word` is added to the index, all of the
+converted into `tokens`. Typically, when a `word` is added to the index, many
 various `token` forms of the `word` are added to the index. But what's special
 about this is that these `tokens` are added at the _exact same position_.
 
-If you think of the index as just an array of individual words, you'll have a slightly
+If you think of the index as just an array of individual words, you have a slightly
 incorrect mental model. The reason why this is wrong is because an inverted
 word index is a mapping of words to positions; it's not a positional array of words.
 
@@ -137,7 +137,7 @@ The following is a perfectly legal index:
 Note that every single token has exactly one instance, and each one of those instances
 is at position 1.
 
-That's an extremely example. But now consider indexing the following node:
+That's an extreme example. But now consider indexing the following node:
 
 `node`: Résumés can be a useful personal marketing tool
 
@@ -146,7 +146,7 @@ Obviously, the index would contain the following `token`:
 * Résumés: 1
 
 However, it would be common for an end-user to search for `résumés` (lower-case), `resumes`
-(no diacritical marks) or even resume (lower-case, non-diacrtic singular form). In ESS
+(no diacritical marks) or even `resume` (lower-case, non-diacrtic singular form). In ESS
 this is addressed by indexing all of these `token` forms of the `word`:
 
 * a: 4
@@ -183,6 +183,6 @@ containing all of the tokens. B-Trees are nice because they are balanced and the
 can be tuned for reading and writing to physical storage by varying the degree of
 branching.
 
-The B-Tree, in turn, points to a list of positions for each `token`. The positional
+The B-Tree nodes, in turn, points to a list of positions for each `token`. The positional
 list is highly optimized with a number of artifacts to help optimize query
 operations. More on these optimizations later.  
