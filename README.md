@@ -11,4 +11,4 @@ You'll probably want to start with the [overview](overview.md).
 
 Read the [development blog](http://stufftoddknows.com/tag/bobo/).
 
-Note that most of the interesting work is happening in [other branches](branches).
+Note that most of the interesting work is happening in [other branches](https://github.com/qodfathr/Bobo/branches).
