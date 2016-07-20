@@ -4,6 +4,7 @@
 using System;
 using System.IO;
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 using Daxat.Ess.Indexers.InvertedWordLists;
 using Daxat.Ess.Indexers.FullTextIndexers;
@@ -294,16 +295,16 @@ namespace Daxat.Ess.Indexers.BTreeIndexers
 			return res;
 		}
 
-		public ArrayList DumpWords()
+		public List<string> DumpWords()
 		{
 			_readerWriterLock.AcquireReaderLock(-1);
-			ArrayList words = new ArrayList();
+			List<string> words = new List<string>();
 			DumpWords(root, ref words);
 			_readerWriterLock.ReleaseReaderLock();
 			return words;
 		}
 
-		private void DumpWords(BTreeNode node, ref ArrayList words)
+		private void DumpWords(BTreeNode node, ref List<string> words)
 		{
 			for (int i=0; i < node.NumKeys; i++)
 			{
