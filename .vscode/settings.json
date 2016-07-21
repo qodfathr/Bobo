@@ -1,0 +1,9 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "files.exclude": {
+        "src/ESS/**": true,
+        "src/ESS Email Demo/**": true,
+        "src/EssDoxExamples/**": true,
+        "src/ESSxxx1/**": true
+    }
+}

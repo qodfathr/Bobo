@@ -1,7 +1,30 @@
 {
   "version": "1.0.0-*",
   "buildOptions": {
-    "debugType": "portable"
+    "debugType": "portable",
+    "compile": {
+      "exclude": [
+        "DataProviders/**",
+        "Enumerators/**",
+        "Exceptions/**",
+        "Grammar/**",
+        "Indexers/**",
+        "Indexes/**",
+        "Literals/**",
+        "Metadata/**",
+        "Nodes/**",
+        "Queries/**",
+        "Remoting/**",
+        "Scoring/**",
+        "Search Results/**",
+        "Server/**",
+        "Utils/Collections/Heap.cs",
+        "Utils/Collections/ICountable.cs",
+        "Utils/Collections/OrderStatistic.cs",
+        "Utils/IO/**",
+        "Utils/System/**",
+      ]
+    }
   },
   "dependencies": {},
   "frameworks": {
