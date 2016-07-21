@@ -22,11 +22,11 @@
         "Utils/Collections/ICountable.cs",
         "Utils/Collections/OrderStatistic.cs",
         "Utils/IO/**",
-        "Utils/System/**",
+        "Utils/System/**"
       ]
     }
   },
-  "dependencies": {},
+  "dependencies": { "Bobo.Polyfills": "1.0.0" },
   "frameworks": {
     "netstandard1.6": {
       "dependencies": {

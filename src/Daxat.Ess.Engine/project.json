@@ -37,12 +37,14 @@
       ]
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "Bobo.Polyfills": "1.0.0",
+    "FTx Server Library": "1.0.0"
+    },
   "frameworks": {
     "netstandard1.6": {
       "dependencies": {
-        "NETStandard.Library": "1.6.0",
-        "FTx Server Library": "1.0.0"
+        "NETStandard.Library": "1.6.0"
       }
     }
   }
