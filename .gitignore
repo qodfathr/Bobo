@@ -1,0 +1,4 @@
+**/project.lock.json
+src/**/bin/**
+src/**/obj/**
+
