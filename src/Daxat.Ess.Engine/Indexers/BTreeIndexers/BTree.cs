@@ -35,7 +35,7 @@ namespace Daxat.Ess.Indexers.BTreeIndexers
 			else root = storage.Read(0);
 		}
 
-		protected void Create()
+		private void Create()
 		{
 			root = storage.AllocateNode();
 			root.IsLeaf = true;
@@ -64,7 +64,7 @@ namespace Daxat.Ess.Indexers.BTreeIndexers
 			return Search(storage.Read(x.GetChild(i)), key);
 		}
 
-		protected int FindKeyInNode(BTreeNode x, object nativeKey2, ref int comparison)
+		private int FindKeyInNode(BTreeNode x, object nativeKey2, ref int comparison)
 		{
 			// We use a binary, rather than linear, search to find the key, or, if
 			// not found, the 'closest' key plus an indicatation of which child to follow.
@@ -129,7 +129,7 @@ namespace Daxat.Ess.Indexers.BTreeIndexers
 			}
 		}
 
-		protected BTreeNode SplitChild(BTreeNode x, short i, BTreeNode y)
+		private BTreeNode SplitChild(BTreeNode x, short i, BTreeNode y)
 		{
 			BTreeNode z = storage.AllocateNode();
 			z.IsLeaf = y.IsLeaf;
@@ -269,7 +269,7 @@ namespace Daxat.Ess.Indexers.BTreeIndexers
 			return result;
 		}
 
-		protected String ToXML(BTreeNode x, IInvertedWordList invertedWordList)
+		private String ToXML(BTreeNode x, IInvertedWordList invertedWordList)
 		{
 			String res = "";
 			
