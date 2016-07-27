@@ -1,17 +1,6 @@
-/*
- * $Header: C:/CVS\040Repositories/ESS/ESS/FTx\040Server\040Library/AssemblyInfo.cs,v 1.5 2005/01/24 14:36:59 Todd A. Mancini Exp $
- * @(#)$Id: AssemblyInfo.cs,v 1.5 2005/01/24 14:36:59 Todd A. Mancini Exp $
- *
- * Copyright 2002-2004 by Daxat, Inc.,
- * 35 Hidden Valley Road, Groton, Massachusetts, U.S.A.
- * All rights reserved.
- *
- * This software is the confidential and proprietary information
- * of Daxat, Inc. ("Confidential Information").  You
- * shall not disclose such Confidential Information and shall use
- * it only in accordance with the terms of the license agreement
- * you entered into with Daxat.
- */
+// Copyright (c) 2002-2016 Daxat, Inc. and Todd A. Mancini. All rights reserved.
+// Daxat, Inc. and Todd A. Mancini licenses this file to you under the MIT license. 
+// See the LICENSE file in the project root for more information. 
 using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -73,7 +62,7 @@ using System.Security;
 //       documentation for more information on this.
 //
 [assembly: AssemblyDelaySign(false)]
-[assembly: AssemblyKeyFile(@"..\..\FTxServerLibrary.snk")]
+//[assembly: AssemblyKeyFile(@"..\..\FTxServerLibrary.snk")]
 [assembly: AllowPartiallyTrustedCallers()]
 //[assembly: AssemblyKeyFile("")]
 [assembly: AssemblyKeyName("")]
