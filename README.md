@@ -1,6 +1,9 @@
 # Bobo
 Search engine written in .NET Core
 
+## Update 02/02/2020: time to make the move to. NET Core 3.x.
+So much that was going to be challenging in porting to 1.0 is easy in 3.x due to the completeness of the framework. 
+
 This project began back in 2002 as a commercial search engine from Daxat, Inc. written in C# for the Microsoft .NET Framework 1.0.
 It seems only fitting that it resurfaces as a .NET Core 1.0 project.
 
