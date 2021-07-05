@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "debugType": "portable",
+    "compile": {
+      "exclude": [
+            "Documents/**/*",
+            "Enumerators/**/*",
+            "Grammar/**/*",
+            "Indexers/FullTextIndexers/**/*",
+            "Indexers/InvertedWordLists/**/*",
+            "Indexers/Nodes/**/*",
+            "Indexers/SuffixTrees/**/*",
+            "Indexers/UniqueWords/**/*",
+            "Literals/**/*",
+            "Metadata/**/*",
+            "Scoring/**/*",
+            "Utils/**/*",
+            "*.csproj*",
+            "*.vspscc",
+            ".cvsignore",
+            "AssemblyInfo.cs",
+            "Indexers/BTreeIndexers/BTreeKeyDataPair.cs",
+            "Indexers/BTreeIndexers/BTreeNode.cs",
+            "Indexers/BTreeIndexers/BTreeStorage.cs",
+            "Indexers/BTreeIndexers/CompareLiteralBTreeKeyToNumeric.cs",
+            "Indexers/BTreeIndexers/IBTreeKey.cs",
+            "Indexers/BTreeIndexers/IBTreeNode.cs",
+            "Indexers/BTreeIndexers/ICompareLiteralBTreeKeyToNumeric.cs",
+            "Indexers/BTreeIndexers/LiteralBTreeKey.cs",
+            "Indexers/BTreeIndexers/MapUniqueWordsToBTree.cs"
+      ]
+    }
+  },
+  "dependencies": {},
+  "frameworks": {
+    "netstandard1.6": {
+      "dependencies": {
+        "NETStandard.Library": "1.6.0"
+      }
+    }
+  }
+}
